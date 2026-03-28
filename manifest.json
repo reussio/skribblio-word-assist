@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Skribbl.io Word Assist",
+  "version": "1.0.0",
+  "description": "Shows matching word suggestions for skribbl.io based on word length, revealed letters, and spaces.",
+  "minimum_chrome_version": "114",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://skribbl.io/*",
+    "https://www.skribbl.io/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://skribbl.io/*",
+        "https://www.skribbl.io/*"
+      ],
+      "js": [
+        "src/game.js",
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/data/*.json"
+      ],
+      "matches": [
+        "https://skribbl.io/*",
+        "https://www.skribbl.io/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Skribbl.io Word Assist",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  }
+}
