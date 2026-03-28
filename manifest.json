@@ -14,9 +14,11 @@
     "storage"
   ],
   "host_permissions": [
-    "https://skribbl.io/*",
-    "https://www.skribbl.io/*"
+    "https://raw.githubusercontent.com/reussio/skribblio-word-assist/*"
   ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -24,24 +26,12 @@
         "https://www.skribbl.io/*"
       ],
       "js": [
-        "src/game.js",
         "src/content.js"
       ],
       "css": [
         "src/content.css"
       ],
       "run_at": "document_idle"
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "src/data/*.json"
-      ],
-      "matches": [
-        "https://skribbl.io/*",
-        "https://www.skribbl.io/*"
-      ]
     }
   ],
   "action": {
