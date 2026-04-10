@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Skribbl.io Word Assist",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Shows matching word suggestions for skribbl.io based on word length, revealed letters, and spaces.",
   "minimum_chrome_version": "114",
   "icons": {
