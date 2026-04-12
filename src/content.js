@@ -69,17 +69,22 @@
   const matchCountLabel = root.querySelector('[data-role="match-count"]');
   const inputFilterToggle = root.querySelector('[data-role="input-filter-toggle"]');
   const suggestionsList = root.querySelector('[data-role="suggestions"]');
+  const FIXED_HINT_CHARACTERS = [".", "-", " "];
 
   function normalizeLetters(value) {
     return value
       .normalize("NFC")
       .toLocaleLowerCase()
       .replace(/\s+/gu, " ")
-      .replace(/[^\p{L}\p{N}_ \-]/gu, "");
+      .replace(/[^\p{L}\p{N}_ .\-]/gu, "");
   }
 
   function normalizePattern(value) {
     return normalizeLetters(value).trim();
+  }
+
+  function getFixedHintCharacter(rawText) {
+    return FIXED_HINT_CHARACTERS.find((character) => rawText.includes(character)) || null;
   }
 
   function scoreMatch(word, pattern) {
@@ -187,11 +192,9 @@
     if (hintNodes.length > 0) {
       return Array.from(hintNodes, (hintNode) => {
         const rawText = hintNode.textContent || "";
-        if (/\s/u.test(rawText)) {
-          return " ";
-        }
-        if (rawText.includes("-")) {
-          return "-";
+        const fixedCharacter = getFixedHintCharacter(rawText);
+        if (fixedCharacter) {
+          return fixedCharacter;
         }
         if (hintNode.classList.contains("uncover")) {
           const normalizedText = normalizeLetters(rawText)
@@ -239,11 +242,9 @@
     if (hintNodes.length > 0) {
       return Array.from(hintNodes, (hintNode) => {
         const rawText = hintNode.textContent || "";
-        if (/\s/u.test(rawText)) {
-          return " ";
-        }
-        if (rawText.includes("-")) {
-          return "-";
+        const fixedCharacter = getFixedHintCharacter(rawText);
+        if (fixedCharacter) {
+          return fixedCharacter;
         }
         return "_";
       }).join("");
