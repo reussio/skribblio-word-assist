@@ -8,7 +8,7 @@ export interface PageMount {
   wrapperElement: HTMLDivElement;
 }
 
-interface ChatElements {
+export interface ChatElements {
   form: HTMLFormElement;
   input: HTMLInputElement;
 }
@@ -34,6 +34,28 @@ export function isGuessPhase(wordContainer: Element): boolean {
   const descriptionNode = wordContainer.querySelector(".description");
   const description = (descriptionNode?.textContent ?? "").trim().toLowerCase();
   return description.includes("guess");
+}
+
+export function isRoundResolved(wordContainer: Element | null): boolean {
+  if (!wordContainer) {
+    return false;
+  }
+
+  const hintNodes = wordContainer.querySelectorAll(".hint");
+  let hasGuessableCharacter = false;
+
+  for (const hintNode of hintNodes) {
+    if (getFixedHintCharacter(hintNode.textContent ?? "")) {
+      continue;
+    }
+
+    hasGuessableCharacter = true;
+    if (!hintNode.classList.contains("uncover")) {
+      return false;
+    }
+  }
+
+  return hasGuessableCharacter;
 }
 
 export function mountIntoPage(mount: PageMount): void {
@@ -143,7 +165,7 @@ export function hasCurrentUserGuessed(): boolean {
   });
 }
 
-function getChatElements(): ChatElements | null {
+export function getChatElements(): ChatElements | null {
   const form = document.querySelector("#game-chat > form");
   const input = document.querySelector("#game-chat > form > input[type=text]");
   if (!(form instanceof HTMLFormElement) || !(input instanceof HTMLInputElement)) {

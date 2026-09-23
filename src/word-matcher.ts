@@ -60,3 +60,25 @@ export function findMatches(
     visible: matches.slice(0, 50)
   };
 }
+
+export function excludeSubmittedWord(
+  words: readonly WordEntry[],
+  excludedWords: ReadonlySet<string>,
+  submittedWord: string
+): ReadonlySet<string> {
+  const normalizedSubmittedWord = normalizePattern(submittedWord);
+  if (!normalizedSubmittedWord) {
+    return excludedWords;
+  }
+
+  const nextExcludedWords = new Set(excludedWords);
+  let changed = false;
+  for (const word of words) {
+    if (word.normalized === normalizedSubmittedWord && !nextExcludedWords.has(word.raw)) {
+      nextExcludedWords.add(word.raw);
+      changed = true;
+    }
+  }
+
+  return changed ? nextExcludedWords : excludedWords;
+}

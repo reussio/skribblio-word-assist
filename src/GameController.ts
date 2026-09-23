@@ -1,12 +1,13 @@
 import {
   detectLanguage,
-  getChatInput,
+  getChatElements,
   getChatInputFilter,
   getHintsNode,
   getWordNode,
   hasCurrentUserGuessed,
   isGameVisible,
   isGuessPhase,
+  isRoundResolved,
   type PageMount,
   readPatternFromDom,
   readRoundSignatureFromDom,
@@ -15,7 +16,7 @@ import {
 } from "./game-dom";
 import type { GameSnapshot, LanguageCode, WordEntry } from "./model";
 import { loadPackagedWords, runtimeAvailable } from "./runtime";
-import { normalizeLetters, normalizePattern } from "./word-matcher";
+import { excludeSubmittedWord, normalizeLetters, normalizePattern } from "./word-matcher";
 
 type Listener = () => void;
 
@@ -31,6 +32,7 @@ export class GameController {
   private observedHintsNode: Element | null = null;
   private observedWordNode: Element | null = null;
   private boundChatInput: HTMLInputElement | null = null;
+  private boundChatForm: HTMLFormElement | null = null;
   private refreshFrame: number | null = null;
   private started = false;
 
@@ -106,9 +108,7 @@ export class GameController {
   }
 
   selectWord(word: string): void {
-    const excludedWords = new Set(this.snapshot.excludedWords);
-    excludedWords.add(word);
-    this.setSnapshot({ ...this.snapshot, excludedWords });
+    this.excludeWord(word);
     submitGuess(word);
   }
 
@@ -117,7 +117,7 @@ export class GameController {
     this.hintsObserver.disconnect();
     this.wordObserver.disconnect();
     this.gameMountObserver.disconnect();
-    this.bindChatInput(null);
+    this.bindChatElements(null);
 
     if (this.refreshFrame !== null) {
       cancelAnimationFrame(this.refreshFrame);
@@ -142,14 +142,52 @@ export class GameController {
     }
   };
 
-  private bindChatInput(input: HTMLInputElement | null): void {
-    if (input === this.boundChatInput) {
+  private readonly handleChatKeyDown = (event: KeyboardEvent): void => {
+    if (event.key === "Enter" && !event.isComposing) {
+      this.excludeSubmittedChatInput();
+    }
+  };
+
+  private readonly handleChatSubmit = (): void => {
+    this.excludeSubmittedChatInput();
+  };
+
+  private excludeSubmittedChatInput(): void {
+    if (!this.snapshot.pattern || !this.boundChatInput) {
+      return;
+    }
+
+    const excludedWords = excludeSubmittedWord(
+      this.snapshot.words,
+      this.snapshot.excludedWords,
+      this.boundChatInput.value
+    );
+    if (excludedWords !== this.snapshot.excludedWords) {
+      this.setSnapshot({ ...this.snapshot, excludedWords });
+    }
+  }
+
+  private excludeWord(word: string): void {
+    const excludedWords = new Set(this.snapshot.excludedWords);
+    excludedWords.add(word);
+    this.setSnapshot({ ...this.snapshot, excludedWords });
+  }
+
+  private bindChatElements(elements: ReturnType<typeof getChatElements>): void {
+    if (elements?.input === this.boundChatInput && elements?.form === this.boundChatForm) {
       return;
     }
 
     this.boundChatInput?.removeEventListener("input", this.handleChatInput);
-    input?.addEventListener("input", this.handleChatInput);
-    this.boundChatInput = input;
+    this.boundChatInput?.removeEventListener("keydown", this.handleChatKeyDown, true);
+    this.boundChatForm?.removeEventListener("submit", this.handleChatSubmit, true);
+
+    this.boundChatInput = elements?.input ?? null;
+    this.boundChatForm = elements?.form ?? null;
+
+    this.boundChatInput?.addEventListener("input", this.handleChatInput);
+    this.boundChatInput?.addEventListener("keydown", this.handleChatKeyDown, true);
+    this.boundChatForm?.addEventListener("submit", this.handleChatSubmit, true);
   }
 
   private syncWordObserver(): void {
@@ -226,7 +264,7 @@ export class GameController {
   private async refresh(): Promise<void> {
     this.syncWordObserver();
     this.syncHintsObserver();
-    this.bindChatInput(getChatInput());
+    this.bindChatElements(getChatElements());
 
     if (!isGameVisible()) {
       this.setSnapshot({ ...this.snapshot, pattern: "", visible: false });
@@ -264,15 +302,18 @@ export class GameController {
 
   private updateView(changes: Partial<GameSnapshot>): void {
     const wordContainer = getWordNode();
+    const isSolved = hasCurrentUserGuessed();
+    const roundResolved = isRoundResolved(wordContainer);
     const nextSnapshot: GameSnapshot = {
       ...this.snapshot,
       ...changes,
       inputFilter: this.snapshot.inputFilterEnabled ? getChatInputFilter() : "",
-      isSolved: hasCurrentUserGuessed(),
+      isSolved,
       visible:
         isGameVisible() &&
         Boolean(wordContainer) &&
         Boolean(wordContainer && isGuessPhase(wordContainer)) &&
+        (!roundResolved || isSolved) &&
         (Boolean(changes.pattern ?? this.snapshot.pattern) || !this.snapshot.runtimeAvailable)
     };
 
