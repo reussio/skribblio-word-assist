@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <title>Generated promotional screenshot showing the solved state and privacy</title>
+  <defs>
+    <linearGradient id="solved-background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2e5b9a"/>
+      <stop offset="1" stop-color="#214d88"/>
+    </linearGradient>
+    <linearGradient id="solved-overlay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#173054" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#173054" stop-opacity="0.78"/>
+    </linearGradient>
+    <filter id="solved-shadow" x="-20%" y="-25%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#102a4f" flood-opacity="0.32"/>
+    </filter>
+    <filter id="solved-soft-shadow" x="-20%" y="-35%" width="140%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#102a4f" flood-opacity="0.18"/>
+    </filter>
+    <clipPath id="solved-scene-clip">
+      <rect x="54" y="176" width="680" height="550" rx="22"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#solved-background)"/>
+  <g fill="none" stroke="#173f79" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" opacity="0.65">
+    <path d="M18 62c37-34 76-32 100 8s60 41 98 2"/>
+    <path d="M1142 27l32 32-32 32-32-32z"/>
+    <circle cx="1210" cy="714" r="38"/>
+    <path d="M1184 714h52M1210 688v52"/>
+    <path d="M1041 756l33-53 33 53zM1054 742h40"/>
+    <path d="M470 50c25-31 59-30 72 5s43 41 73 9"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="54" y="54" fill="#f5cf3f" font-size="14" font-weight="800" letter-spacing="2.3">PRIVATE BY DESIGN</text>
+    <text x="54" y="96" fill="#ffffff" font-size="38" font-weight="800">Solved. Private. Ready for the next round.</text>
+    <text x="54" y="132" fill="#dfeaff" font-size="20" font-weight="600">Local matching in five languages — no account, analytics or tracking.</text>
+  </g>
+
+  <!-- Generated game scene -->
+  <g filter="url(#solved-shadow)">
+    <rect x="54" y="176" width="680" height="550" rx="22" fill="#ffffff"/>
+  </g>
+  <g clip-path="url(#solved-scene-clip)">
+    <image href="./scene-success.png" x="54" y="176" width="680" height="550" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="54" y="176" width="680" height="550" fill="url(#solved-overlay)"/>
+
+    <g filter="url(#solved-soft-shadow)">
+      <rect x="82" y="200" width="624" height="68" rx="16" fill="#ffffff"/>
+    </g>
+    <g font-family="Arial, Helvetica, sans-serif">
+      <text x="105" y="226" fill="#718096" font-size="11" font-weight="800" letter-spacing="1.6">THE WORD WAS</text>
+      <text x="105" y="252" fill="#132238" font-size="24" font-weight="800" letter-spacing="3">APPLE</text>
+      <circle cx="668" cy="234" r="22" fill="#5bcf4a"/>
+      <path d="M658 234l7 7 14-17" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+    </g>
+
+    <g filter="url(#solved-shadow)">
+      <rect x="100" y="580" width="588" height="108" rx="18" fill="#173054" fill-opacity="0.92"/>
+    </g>
+    <circle cx="151" cy="634" r="26" fill="#5bcf4a"/>
+    <path d="M140 634l8 8 16-20" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+    <g font-family="Arial, Helvetica, sans-serif">
+      <text x="195" y="626" fill="#ffffff" font-size="23" font-weight="800">Nice guess!</text>
+      <text x="195" y="654" fill="#dfeaff" font-size="16" font-weight="600">Suggestions pause until the next round begins.</text>
+      <text x="650" y="642" text-anchor="end" fill="#83e16f" font-size="20" font-weight="800">+300</text>
+    </g>
+  </g>
+
+  <!-- Exact solved extension UI -->
+  <g filter="url(#solved-shadow)">
+    <rect x="770" y="176" width="456" height="192" rx="12" fill="#ffffff" stroke="#d9dfe7"/>
+  </g>
+  <path d="M770 240h456" stroke="#e1e6ed"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="792" y="215" fill="#43556f" font-size="14" font-weight="800" letter-spacing="1.4">GUESSED</text>
+    <text x="876" y="215" fill="#43556f" font-size="15" font-weight="500">Solved · English</text>
+    <rect x="1090" y="200" width="18" height="18" rx="4" fill="#43556f"/>
+    <path d="M1095 209l3 3 6-7" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"/>
+    <text x="1116" y="215" fill="#43556f" font-size="14">Filter by Chat</text>
+    <rect x="792" y="267" width="174" height="48" rx="6" fill="#f1f3f6"/>
+    <text x="879" y="297" text-anchor="middle" fill="#43556f" font-size="15">Successfully guessed</text>
+  </g>
+
+  <!-- Privacy card -->
+  <g filter="url(#solved-shadow)">
+    <rect x="770" y="390" width="456" height="196" rx="12" fill="#ffffff"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="792" y="426" fill="#43556f" font-size="13" font-weight="800" letter-spacing="1.5">PRIVATE BY DESIGN</text>
+    <g transform="translate(792 450)">
+      <circle cx="12" cy="12" r="12" fill="#eaf6e7"/>
+      <path d="M7 12l4 4 7-9" fill="none" stroke="#41954f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+      <text x="35" y="18" fill="#132238" font-size="16" font-weight="700">All matching stays in your browser</text>
+    </g>
+    <g transform="translate(792 496)">
+      <circle cx="12" cy="12" r="12" fill="#eaf6e7"/>
+      <path d="M7 12l4 4 7-9" fill="none" stroke="#41954f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+      <text x="35" y="18" fill="#132238" font-size="16" font-weight="700">No account required · no personal data collected</text>
+    </g>
+    <g transform="translate(792 542)">
+      <circle cx="12" cy="12" r="12" fill="#eaf6e7"/>
+      <path d="M7 12l4 4 7-9" fill="none" stroke="#41954f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+      <text x="35" y="18" fill="#132238" font-size="16" font-weight="700">No analytics or tracking</text>
+    </g>
+  </g>
+
+  <!-- Language chips -->
+  <g filter="url(#solved-shadow)">
+    <rect x="770" y="608" width="456" height="118" rx="12" fill="#ffffff"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="792" y="640" fill="#43556f" font-size="13" font-weight="800" letter-spacing="1.4">5 SUPPORTED LANGUAGES</text>
+    <g transform="translate(792 659)" fill="#edf3fa">
+      <rect width="75" height="39" rx="19.5"/>
+      <rect x="83" width="75" height="39" rx="19.5"/>
+      <rect x="166" width="75" height="39" rx="19.5"/>
+      <rect x="249" width="75" height="39" rx="19.5"/>
+      <rect x="332" width="86" height="39" rx="19.5"/>
+    </g>
+    <g fill="#173054" font-size="13" font-weight="800" text-anchor="middle">
+      <text x="829.5" y="684">English</text>
+      <text x="912.5" y="684">German</text>
+      <text x="995.5" y="684">Spanish</text>
+      <text x="1078.5" y="684">French</text>
+      <text x="1167" y="684">Korean</text>
+    </g>
+  </g>
+</svg>

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Skribbl.io Word Assist",
-  "version": "1.1.1",
-  "description": "Shows matching word suggestions for skribbl.io based on word length, revealed letters, and spaces.",
+  "version": "1.2.0",
+  "description": "Find matching skribbl.io words from live hints with fast, private, multilingual suggestions beside the chat.",
   "minimum_chrome_version": "114",
   "icons": {
     "16": "resources/icons/icon-16.png",

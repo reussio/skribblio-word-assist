@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560">
+  <title>Skribbl.io Word Assist marquee promotional tile</title>
+  <rect width="1400" height="560" fill="#2e5b9a"/>
+  <g fill="none" stroke="#214d88" stroke-width="10" opacity="0.68">
+    <path d="M20 76c53-48 101-44 127 8s71 54 119 2"/>
+    <path d="M320 28l44 44-44 44-44-44z"/>
+    <circle cx="1260" cy="88" r="60"/>
+    <path d="M1221 88h78M1260 49v78"/>
+    <path d="M64 474l48-76 48 76zM82 456h60"/>
+    <path d="M1028 497c39-63 93-64 134-4 28 42 60 43 96 10"/>
+    <path d="M627 61c30-40 77-36 88 9s47 55 85 15"/>
+  </g>
+  <rect x="82" y="125" width="230" height="230" rx="48" fill="#ffffff" opacity="0.98"/>
+  <image href="../icons/icon-128.png" x="101" y="144" width="192" height="192" image-rendering="pixelated"/>
+  <text x="365" y="174" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700">Skribbl.io</text>
+  <text x="365" y="235" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700">Word Assist</text>
+  <text x="365" y="281" fill="#dfeaff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600">Live suggestions beside the chat.</text>
+  <g transform="translate(365 319)">
+    <rect width="188" height="62" rx="10" fill="#ffffff"/>
+    <text x="94" y="40" text-anchor="middle" fill="#173054" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">A _ _ L E</text>
+    <path d="M213 31h48" stroke="#f5cf3f" stroke-width="9" stroke-linecap="round"/>
+    <path d="M250 18l16 13-16 13" fill="none" stroke="#f5cf3f" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="286" width="154" height="62" rx="10" fill="#ffffff"/>
+    <text x="363" y="40" text-anchor="middle" fill="#173054" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">APPLE</text>
+  </g>
+  <g transform="translate(925 130)">
+    <rect width="390" height="300" rx="18" fill="#ffffff"/>
+    <text x="28" y="50" fill="#43556f" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800" letter-spacing="2">MATCHES</text>
+    <text x="168" y="50" fill="#43556f" font-family="Arial, Helvetica, sans-serif" font-size="21">8 matches · English</text>
+    <path d="M0 76h390" stroke="#dce2ea" stroke-width="2"/>
+    <g fill="#f8fafc" stroke="#d5dce6" stroke-width="2">
+      <rect x="27" y="103" width="102" height="48" rx="7"/>
+      <rect x="143" y="103" width="102" height="48" rx="7"/>
+      <rect x="259" y="103" width="102" height="48" rx="7"/>
+      <rect x="27" y="166" width="122" height="48" rx="7"/>
+      <rect x="163" y="166" width="103" height="48" rx="7"/>
+      <rect x="280" y="166" width="81" height="48" rx="7"/>
+      <rect x="27" y="229" width="102" height="48" rx="7"/>
+      <rect x="143" y="229" width="122" height="48" rx="7"/>
+    </g>
+    <g fill="#17253a" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">
+      <text x="78" y="134">Apple</text><text x="194" y="134">Angle</text><text x="310" y="134">Ample</text>
+      <text x="88" y="197">Anime</text><text x="214" y="197">Ankle</text><text x="320" y="197">Aisle</text>
+      <text x="78" y="260">Agile</text><text x="204" y="260">Alive</text>
+    </g>
+  </g>
+  <g transform="translate(365 415)">
+    <circle cx="15" cy="15" r="15" fill="#5bcf4a"/>
+    <path d="M8 15l5 5 10-12" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="43" y="23" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600">Private, local and multilingual</text>
+  </g>
+</svg>

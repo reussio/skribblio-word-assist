@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <title>Generated promotional screenshot with live word suggestions</title>
+  <defs>
+    <linearGradient id="live-right-shade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#173054" stop-opacity="0"/>
+      <stop offset="0.22" stop-color="#173054" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="#173054" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="live-hint" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f4f7fb"/>
+    </linearGradient>
+    <filter id="live-shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="13" stdDeviation="15" flood-color="#102a4f" flood-opacity="0.32"/>
+    </filter>
+    <filter id="live-chip-shadow" x="-20%" y="-40%" width="140%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#102a4f" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <image href="./scene-apple.png" x="0" y="0" width="1280" height="800" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="660" width="620" height="800" fill="url(#live-right-shade)"/>
+
+  <!-- Generated game hint -->
+  <g filter="url(#live-chip-shadow)">
+    <rect x="76" y="48" width="692" height="77" rx="18" fill="url(#live-hint)"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <circle cx="113" cy="86" r="23" fill="#2e5b9a"/>
+    <text x="113" y="93" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="800">42</text>
+    <text x="150" y="80" fill="#718096" font-size="11" font-weight="800" letter-spacing="1.6">GUESS THIS</text>
+    <text x="150" y="105" fill="#132238" font-size="22" font-weight="800" letter-spacing="5">A _ _ _ _</text>
+    <text x="724" y="92" text-anchor="end" fill="#43556f" font-size="14" font-weight="700">Round 2 of 3</text>
+  </g>
+
+  <!-- Marketing copy -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="824" y="73" fill="#f5cf3f" font-size="14" font-weight="800" letter-spacing="2.3">LIVE IN-GAME</text>
+    <text x="824" y="113" fill="#ffffff" font-size="34" font-weight="800">Suggestions that</text>
+    <text x="824" y="151" fill="#ffffff" font-size="34" font-weight="800">keep up with the hint.</text>
+    <text x="824" y="183" fill="#dfeaff" font-size="17" font-weight="600">Every revealed letter updates the list.</text>
+  </g>
+
+  <!-- Exact extension UI -->
+  <g filter="url(#live-shadow)">
+    <rect x="824" y="216" width="404" height="282" rx="12" fill="#ffffff" stroke="#d9dfe7"/>
+  </g>
+  <path d="M824 279h404" stroke="#e1e6ed"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="844" y="253" fill="#43556f" font-size="14" font-weight="800" letter-spacing="1.4">MATCHES</text>
+    <text x="929" y="253" fill="#43556f" font-size="15" font-weight="500">22 matches · English</text>
+    <rect x="1091" y="238" width="18" height="18" rx="4" fill="#43556f"/>
+    <path d="M1096 247l3 3 6-7" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"/>
+    <text x="1117" y="253" fill="#43556f" font-size="14">Filter by Chat</text>
+  </g>
+  <g fill="#ffffff" stroke="#d9dfe7" filter="url(#live-chip-shadow)">
+    <rect x="844" y="300" width="102" height="44" rx="6"/>
+    <rect x="957" y="300" width="102" height="44" rx="6"/>
+    <rect x="1070" y="300" width="102" height="44" rx="6"/>
+    <rect x="844" y="356" width="102" height="44" rx="6"/>
+    <rect x="957" y="356" width="102" height="44" rx="6"/>
+    <rect x="1070" y="356" width="102" height="44" rx="6"/>
+    <rect x="844" y="412" width="102" height="44" rx="6"/>
+    <rect x="957" y="412" width="102" height="44" rx="6"/>
+  </g>
+  <g fill="#132238" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" text-anchor="middle">
+    <text x="895" y="328">above</text>
+    <text x="1008" y="328">abyss</text>
+    <text x="1121" y="328">acorn</text>
+    <text x="895" y="384">actor</text>
+    <text x="1008" y="384">adult</text>
+    <text x="1121" y="384">alarm</text>
+    <text x="895" y="440">algae</text>
+    <text x="1008" y="440">alien</text>
+  </g>
+
+  <!-- Generated chat context -->
+  <g filter="url(#live-shadow)">
+    <rect x="824" y="518" width="404" height="210" rx="12" fill="#ffffff"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14">
+    <rect x="824" y="518" width="404" height="38" rx="12" fill="#eef6ff"/>
+    <path d="M824 544v12h404v-12" fill="#eef6ff"/>
+    <text x="842" y="543" fill="#4386d8" font-weight="800">Mia is drawing now!</text>
+    <rect x="824" y="556" width="404" height="38" fill="#f6f7f9"/>
+    <text x="842" y="581" fill="#132238"><tspan font-weight="800">Kai:</tspan> angle</text>
+    <rect x="824" y="594" width="404" height="38" fill="#ffffff"/>
+    <text x="842" y="619" fill="#132238"><tspan font-weight="800">Lena:</tspan> anime</text>
+    <rect x="824" y="632" width="404" height="38" fill="#f6f7f9"/>
+    <text x="842" y="657" fill="#132238"><tspan font-weight="800">Noah:</tspan> ankle</text>
+    <rect x="838" y="680" width="376" height="35" rx="5" fill="#ffffff" stroke="#5aa1f2" stroke-width="2"/>
+    <text x="850" y="703" fill="#9aa5b4">Type your guess here...</text>
+  </g>
+
+  <g transform="translate(76 700)" font-family="Arial, Helvetica, sans-serif" filter="url(#live-chip-shadow)">
+    <rect width="257" height="48" rx="24" fill="#ffffff"/>
+    <circle cx="25" cy="24" r="9" fill="#5bcf4a"/>
+    <path d="M20 24l4 4 7-9" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+    <text x="44" y="31" fill="#173054" font-size="16" font-weight="800">Updates automatically</text>
+  </g>
+</svg>

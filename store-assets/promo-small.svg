@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280" viewBox="0 0 440 280">
+  <title>Skribbl.io Word Assist small promotional tile</title>
+  <rect width="440" height="280" fill="#2e5b9a"/>
+  <g fill="none" stroke="#214d88" stroke-width="5" opacity="0.62">
+    <path d="M12 34c24-20 46-18 58 4s32 23 53 1"/>
+    <path d="M342 30l20 20-20 20-20-20z"/>
+    <circle cx="403" cy="113" r="32"/>
+    <path d="M381 113h44M403 91v44"/>
+    <path d="M21 230l25-39 25 39zM31 222h30"/>
+    <path d="M326 235c18-28 42-29 61-2 13 19 27 19 43 5"/>
+  </g>
+  <rect x="22" y="34" width="112" height="112" rx="24" fill="#ffffff" opacity="0.98"/>
+  <image href="../icons/icon-128.png" x="30" y="42" width="96" height="96" image-rendering="pixelated"/>
+  <text x="158" y="72" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700">Skribbl.io</text>
+  <text x="158" y="109" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700">Word Assist</text>
+  <text x="158" y="143" fill="#dfeaff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600">Match hints. Find words.</text>
+  <g transform="translate(82 185)">
+    <rect width="112" height="46" rx="8" fill="#ffffff"/>
+    <text x="56" y="30" text-anchor="middle" fill="#173054" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">A _ _ L E</text>
+    <path d="M122 23h34" stroke="#f5cf3f" stroke-width="7" stroke-linecap="round"/>
+    <path d="M147 13l12 10-12 10" fill="none" stroke="#f5cf3f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="170" width="112" height="46" rx="8" fill="#ffffff"/>
+    <text x="226" y="30" text-anchor="middle" fill="#173054" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">APPLE</text>
+  </g>
+</svg>
