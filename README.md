@@ -1,6 +1,6 @@
 # skribbl.io Helper
 
-Erster Prototyp einer Chrome-Extension fuer `skribbl.io`.
+Chrome-Extension fuer `skribbl.io`, gebaut mit React, TypeScript und Vite.
 
 ## Aktueller Stand
 
@@ -14,25 +14,35 @@ Erster Prototyp einer Chrome-Extension fuer `skribbl.io`.
 
 ## Dateien
 
-- `manifest.json`: Manifest V3 fuer Chrome.
-- `src/background.js`: Laedt Wortlisten remote von GitHub und nutzt `chrome.storage.local` als Cache.
+- `manifest.json`: Manifest V3 fuer Chrome und Vorlage fuer den Build.
+- `src/background.ts`: Laedt Wortlisten remote von GitHub und nutzt `chrome.storage.local` als Cache.
 - `src/data/*.json`: Sprachspezifische Wortlisten als GitHub-Datenquelle, nicht mehr als `web_accessible_resources`.
-- `src/content.js`: DOM-Erkennung, Pattern-Matching und Overlay-UI.
-- `src/content.css`: Styling des Overlays.
+- `src/content/`: React-UI, DOM-Erkennung, Pattern-Matching und Browser-Kommunikation.
+- `vite.config.ts`: Erzeugt getrennte Bundles fuer Background- und Content-Script.
+
+## Entwicklung
+
+```sh
+npm install
+npm run check
+npm run build
+```
+
+Der Build liegt anschliessend in `dist/`.
 
 ## Installation
 
 1. In Chrome `chrome://extensions` oeffnen.
 2. Entwickler-Modus aktivieren.
 3. `Entpackte Erweiterung laden` waehlen.
-4. Diesen Ordner auswaehlen.
+4. Den erzeugten Ordner `dist/` auswaehlen.
 
 ## Packaging
 
 Fuer ein Store-Paket ohne mitgelieferte Wortlisten:
 
 ```sh
-sh scripts/package-extension.sh
+npm run package
 ```
 
 Das erzeugt `dist/skribblio-word-assist.zip` und laesst `src/data/` bewusst aus.

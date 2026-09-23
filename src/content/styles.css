@@ -105,7 +105,9 @@
   background: #ffffff;
   border: 1px solid rgba(19, 34, 56, 0.12);
   box-shadow: inset 0 -1px 0 rgba(19, 34, 56, 0.04);
+  color: inherit;
   cursor: pointer;
+  font-family: inherit;
   user-select: none;
   transition: background-color 120ms ease;
 }
