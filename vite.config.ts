@@ -15,7 +15,7 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       cssFileName: "content",
-      entry: `${sourceRoot}/content/main.tsx`,
+      entry: `${sourceRoot}/main.tsx`,
       fileName: () => "content.js",
       formats: ["iife"],
       name: "SkribblioContent"
