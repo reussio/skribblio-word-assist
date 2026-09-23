@@ -15,11 +15,10 @@ Chrome-Extension fuer `skribbl.io`, gebaut mit React, TypeScript und Vite.
 ## Dateien
 
 - `manifest.json`: Manifest V3 fuer Chrome und Vorlage fuer den Build.
-- `src/background.ts`: Laedt die mitgelieferten Wortlisten fuer das Content-Script.
-- `src/content/`: React-UI, DOM-Erkennung, Pattern-Matching und Browser-Kommunikation.
+- `src/content/`: React-UI, DOM-Erkennung, Pattern-Matching und Ressourcen-Laden.
 - `resources/icons/`: Extension-Icons in allen benoetigten Groessen.
 - `resources/word-lists/`: Mitgelieferte sprachspezifische Wortlisten.
-- `vite.config.ts`: Erzeugt getrennte Bundles fuer Background- und Content-Script.
+- `vite.config.ts`: Erzeugt das gebuendelte Content-Script.
 
 ## Entwicklung
 

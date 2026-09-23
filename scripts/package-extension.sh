@@ -19,7 +19,6 @@ rm -f "$output_file"
 cd "$repo_root/dist"
 zip -qr "$output_file" \
   manifest.json \
-  background.js \
   content.css \
   content.js \
   resources

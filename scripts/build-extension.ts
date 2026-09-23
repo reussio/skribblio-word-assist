@@ -9,8 +9,7 @@ const outputDirectory = resolve(repositoryRoot, "dist");
 
 process.chdir(repositoryRoot);
 
-await build({ configFile, mode: "background" });
-await build({ configFile, mode: "content" });
+await build({ configFile });
 await cp(resolve(repositoryRoot, "manifest.json"), resolve(outputDirectory, "manifest.json"));
 await cp(resolve(repositoryRoot, "resources"), resolve(outputDirectory, "resources"), {
   recursive: true

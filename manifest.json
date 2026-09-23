@@ -10,15 +10,18 @@
     "48": "resources/icons/icon-48.png",
     "128": "resources/icons/icon-128.png"
   },
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
       "matches": ["https://skribbl.io/*", "https://www.skribbl.io/*"],
       "js": ["content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["resources/word-lists/*.json"],
+      "matches": ["https://skribbl.io/*", "https://www.skribbl.io/*"]
     }
   ],
   "action": {

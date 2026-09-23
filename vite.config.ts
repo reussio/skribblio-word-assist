@@ -4,33 +4,24 @@ import { defineConfig } from "vite";
 
 const sourceRoot = fileURLToPath(new URL("./src", import.meta.url));
 
-export default defineConfig(({ mode }) => {
-  const isBackgroundBuild = mode === "background";
-  if (!isBackgroundBuild && mode !== "content") {
-    throw new Error(`Unknown build mode: ${mode}`);
-  }
-
-  const entryName = isBackgroundBuild ? "background" : "content";
-
-  return {
-    define: {
-      "process.env.NODE_ENV": JSON.stringify("production")
+export default defineConfig({
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("production")
+  },
+  plugins: [react()],
+  publicDir: false,
+  build: {
+    cssCodeSplit: false,
+    emptyOutDir: true,
+    lib: {
+      cssFileName: "content",
+      entry: `${sourceRoot}/content/main.tsx`,
+      fileName: () => "content.js",
+      formats: ["iife"],
+      name: "SkribblioContent"
     },
-    plugins: isBackgroundBuild ? [] : [react()],
-    publicDir: false,
-    build: {
-      cssCodeSplit: false,
-      emptyOutDir: isBackgroundBuild,
-      lib: {
-        cssFileName: "content",
-        entry: `${sourceRoot}/${entryName === "background" ? "background.ts" : "content/main.tsx"}`,
-        fileName: () => `${entryName}.js`,
-        formats: ["iife"],
-        name: isBackgroundBuild ? "SkribblioBackground" : "SkribblioContent"
-      },
-      minify: "oxc",
-      outDir: "dist",
-      target: "chrome114"
-    }
-  };
+    minify: "oxc",
+    outDir: "dist",
+    target: "chrome114"
+  }
 });

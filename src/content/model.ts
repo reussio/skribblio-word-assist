@@ -25,10 +25,3 @@ export interface GameSnapshot {
   visible: boolean;
   words: readonly WordEntry[];
 }
-
-export interface WordListRequest {
-  languageCode: LanguageCode;
-  type: "skribbl-helper:get-word-list";
-}
-
-export type WordListResponse = { ok: true; words: string[] } | { error: string; ok: false };

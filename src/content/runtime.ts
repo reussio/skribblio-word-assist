@@ -1,7 +1,7 @@
-import type { LanguageCode, WordListRequest, WordListResponse } from "./model";
+import type { LanguageCode } from "./model";
 
 interface BrowserRuntime {
-  sendMessage(message: WordListRequest): Promise<WordListResponse>;
+  getURL(path: string): string;
 }
 
 interface BrowserGlobal {
@@ -13,42 +13,34 @@ interface BrowserGlobal {
 const browserRuntimeApi =
   (globalThis as typeof globalThis & BrowserGlobal).browser?.runtime ?? null;
 const chromeRuntimeApi = globalThis.chrome?.runtime ?? null;
+const runtimeApi = browserRuntimeApi ?? chromeRuntimeApi;
 
-export const runtimeAvailable = Boolean(
-  browserRuntimeApi?.sendMessage ?? chromeRuntimeApi?.sendMessage
-);
+export const runtimeAvailable = Boolean(runtimeApi?.getURL);
 
-function sendRuntimeMessage(message: WordListRequest): Promise<WordListResponse> {
-  if (browserRuntimeApi?.sendMessage) {
-    return browserRuntimeApi.sendMessage(message);
+function normalizeWordList(payload: unknown): string[] {
+  if (!Array.isArray(payload)) {
+    throw new Error("Word list response is not an array");
   }
 
-  if (!chromeRuntimeApi?.sendMessage) {
-    return Promise.reject(new Error("Extension runtime unavailable"));
+  const words = payload.map((entry) => String(entry).trim()).filter(Boolean);
+  if (words.length === 0) {
+    throw new Error("Word list response is empty");
   }
 
-  return new Promise((resolve, reject) => {
-    chromeRuntimeApi.sendMessage(message, (response: WordListResponse) => {
-      const error = chromeRuntimeApi.lastError;
-      if (error) {
-        reject(new Error(error.message));
-        return;
-      }
-
-      resolve(response);
-    });
-  });
+  return words;
 }
 
 export async function loadPackagedWords(languageCode: LanguageCode): Promise<string[]> {
-  const response = await sendRuntimeMessage({
-    type: "skribbl-helper:get-word-list",
-    languageCode
-  });
-
-  if (!response.ok) {
-    throw new Error(response.error || "Failed to load word list");
+  if (!runtimeApi?.getURL) {
+    throw new Error("Extension runtime unavailable");
   }
 
-  return Array.isArray(response.words) ? response.words : [];
+  const resourceUrl = runtimeApi.getURL(`resources/word-lists/${languageCode}.json`);
+  const response = await fetch(resourceUrl);
+
+  if (!response.ok) {
+    throw new Error(`Failed to load ${languageCode} word list: HTTP ${response.status}`);
+  }
+
+  return normalizeWordList(await response.json());
 }
