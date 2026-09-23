@@ -1,19 +1,6 @@
 import type { LanguageCode, WordListRequest, WordListResponse } from "./content/model";
 
-const WORD_LIST_BASE_URL =
-  "https://raw.githubusercontent.com/reussio/skribblio-word-assist/main/src/data";
-const WORD_LIST_CACHE_VERSION = "1";
-const WORD_LIST_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 const SUPPORTED_LANGUAGES = new Set<LanguageCode>(["en", "de", "es", "fr", "ko"]);
-
-interface CacheEntry {
-  updatedAt: number;
-  words: string[];
-}
-
-function getCacheKey(languageCode: LanguageCode): string {
-  return `word-list:${WORD_LIST_CACHE_VERSION}:${languageCode}`;
-}
 
 function isWordListRequest(message: unknown): message is WordListRequest {
   if (typeof message !== "object" || message === null) {
@@ -41,63 +28,15 @@ function normalizeWordList(payload: unknown): string[] {
   return words;
 }
 
-async function readCachedWordList(languageCode: LanguageCode): Promise<CacheEntry | null> {
-  const cacheKey = getCacheKey(languageCode);
-  const stored = await chrome.storage.local.get(cacheKey);
-  const cacheEntry = stored[cacheKey] as Partial<CacheEntry> | undefined;
-
-  if (!cacheEntry || !Array.isArray(cacheEntry.words)) {
-    return null;
-  }
-
-  return {
-    words: cacheEntry.words,
-    updatedAt: Number.isFinite(cacheEntry.updatedAt) ? (cacheEntry.updatedAt ?? 0) : 0
-  };
-}
-
-async function writeCachedWordList(languageCode: LanguageCode, words: string[]): Promise<void> {
-  await chrome.storage.local.set({
-    [getCacheKey(languageCode)]: {
-      words,
-      updatedAt: Date.now()
-    }
-  });
-}
-
-function isCacheFresh(cacheEntry: CacheEntry): boolean {
-  return Date.now() - cacheEntry.updatedAt < WORD_LIST_CACHE_TTL_MS;
-}
-
-async function fetchRemoteWordList(languageCode: LanguageCode): Promise<string[]> {
-  const response = await fetch(`${WORD_LIST_BASE_URL}/${languageCode}.json`, {
-    cache: "no-cache"
-  });
+async function loadWordList(languageCode: LanguageCode): Promise<string[]> {
+  const resourceUrl = chrome.runtime.getURL(`resources/word-lists/${languageCode}.json`);
+  const response = await fetch(resourceUrl);
 
   if (!response.ok) {
-    throw new Error(`HTTP ${response.status}`);
+    throw new Error(`Failed to load ${languageCode} word list: HTTP ${response.status}`);
   }
 
   return normalizeWordList(await response.json());
-}
-
-async function loadWordList(languageCode: LanguageCode): Promise<string[]> {
-  const cachedWordList = await readCachedWordList(languageCode);
-  if (cachedWordList && isCacheFresh(cachedWordList)) {
-    return cachedWordList.words;
-  }
-
-  try {
-    const words = await fetchRemoteWordList(languageCode);
-    await writeCachedWordList(languageCode, words);
-    return words;
-  } catch (error) {
-    if (cachedWordList) {
-      return cachedWordList.words;
-    }
-
-    throw error;
-  }
 }
 
 chrome.runtime.onMessage.addListener((message: unknown, _sender, sendResponse) => {

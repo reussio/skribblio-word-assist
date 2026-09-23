@@ -40,7 +40,7 @@ function sendRuntimeMessage(message: WordListRequest): Promise<WordListResponse>
   });
 }
 
-export async function loadRemoteWords(languageCode: LanguageCode): Promise<string[]> {
+export async function loadPackagedWords(languageCode: LanguageCode): Promise<string[]> {
   const response = await sendRuntimeMessage({
     type: "skribbl-helper:get-word-list",
     languageCode

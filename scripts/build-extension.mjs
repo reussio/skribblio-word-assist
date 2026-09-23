@@ -12,4 +12,6 @@ process.chdir(repositoryRoot);
 await build({ configFile, mode: "background" });
 await build({ configFile, mode: "content" });
 await cp(resolve(repositoryRoot, "manifest.json"), resolve(outputDirectory, "manifest.json"));
-await cp(resolve(repositoryRoot, "icons"), resolve(outputDirectory, "icons"), { recursive: true });
+await cp(resolve(repositoryRoot, "resources"), resolve(outputDirectory, "resources"), {
+  recursive: true
+});

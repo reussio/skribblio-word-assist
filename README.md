@@ -5,7 +5,7 @@ Chrome-Extension fuer `skribbl.io`, gebaut mit React, TypeScript und Vite.
 ## Aktueller Stand
 
 - Content Script wird auf `skribbl.io` geladen.
-- Wortlisten werden vom Background-Service-Worker aus GitHub geladen und lokal gecached.
+- Wortlisten werden direkt aus dem Extension-Paket geladen.
 - Die Vorschlaege werden direkt im Bereich `#game-word` unter den Hints eingeblendet.
 - Bereits sichtbare Buchstaben werden mit `_`-Platzhaltern kombiniert, zum Beispiel `a__le`.
 - Die Laenge kommt aus `#game-word > div.hints > div > div.word-length`, aufgedeckte Buchstaben aus `.hint.uncover`.
@@ -15,9 +15,10 @@ Chrome-Extension fuer `skribbl.io`, gebaut mit React, TypeScript und Vite.
 ## Dateien
 
 - `manifest.json`: Manifest V3 fuer Chrome und Vorlage fuer den Build.
-- `src/background.ts`: Laedt Wortlisten remote von GitHub und nutzt `chrome.storage.local` als Cache.
-- `src/data/*.json`: Sprachspezifische Wortlisten als GitHub-Datenquelle, nicht mehr als `web_accessible_resources`.
+- `src/background.ts`: Laedt die mitgelieferten Wortlisten fuer das Content-Script.
 - `src/content/`: React-UI, DOM-Erkennung, Pattern-Matching und Browser-Kommunikation.
+- `resources/icons/`: Extension-Icons in allen benoetigten Groessen.
+- `resources/word-lists/`: Mitgelieferte sprachspezifische Wortlisten.
 - `vite.config.ts`: Erzeugt getrennte Bundles fuer Background- und Content-Script.
 
 ## Entwicklung
@@ -39,14 +40,14 @@ Der Build liegt anschliessend in `dist/`.
 
 ## Packaging
 
-Fuer ein Store-Paket ohne mitgelieferte Wortlisten:
+Fuer ein vollstaendiges Store-Paket:
 
 ```sh
 npm run package
 ```
 
-Das erzeugt `dist/skribblio-word-assist.zip` und laesst `src/data/` bewusst aus.
+Das erzeugt `dist/skribblio-word-assist.zip` inklusive Icons und Wortlisten.
 
 ## Hinweis
 
-Aktuell sind Sprachcodes fuer `en`, `de`, `es`, `fr` und `ko` verdrahtet, passend zu den vorhandenen Dateien in `src/data`. Beim ersten Laden braucht die Extension Netzwerkzugriff auf `raw.githubusercontent.com`. Danach nutzt sie die gecachte Liste fuer 24 Stunden; nach Ablauf wird GitHub beim naechsten Nutzen der jeweiligen Sprache erneut abgefragt. Wenn GitHub dann nicht erreichbar ist, nutzt sie die zuletzt erfolgreich geladene Liste weiter.
+Aktuell sind Sprachcodes fuer `en`, `de`, `es`, `fr` und `ko` verdrahtet, passend zu den vorhandenen Dateien in `resources/word-lists`. Die Extension benoetigt fuer die Wortlisten keinen Netzwerkzugriff; Aktualisierungen werden mit einer neuen Extension-Version ausgeliefert.

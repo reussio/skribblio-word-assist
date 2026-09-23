@@ -14,7 +14,7 @@ import {
   submitGuess
 } from "./game-dom";
 import type { GameSnapshot, LanguageCode, WordEntry } from "./model";
-import { loadRemoteWords, runtimeAvailable } from "./runtime";
+import { loadPackagedWords, runtimeAvailable } from "./runtime";
 import { normalizeLetters, normalizePattern } from "./word-matcher";
 
 type Listener = () => void;
@@ -205,7 +205,7 @@ export class GameController {
     }
 
     try {
-      const payload = await loadRemoteWords(languageCode);
+      const payload = await loadPackagedWords(languageCode);
       const words = payload
         .map((entry): WordEntry | null => {
           const raw = String(entry);

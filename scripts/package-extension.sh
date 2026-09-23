@@ -22,4 +22,4 @@ zip -qr "$output_file" \
   background.js \
   content.css \
   content.js \
-  icons
+  resources
