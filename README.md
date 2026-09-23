@@ -24,9 +24,9 @@ Chrome-Extension fuer `skribbl.io`, gebaut mit React, TypeScript und Vite.
 ## Entwicklung
 
 ```sh
-npm install
-npm run check
-npm run build
+bun install
+bun run check
+bun run build
 ```
 
 Der Build liegt anschliessend in `dist/`.
@@ -43,7 +43,7 @@ Der Build liegt anschliessend in `dist/`.
 Fuer ein vollstaendiges Store-Paket:
 
 ```sh
-npm run package
+bun run package
 ```
 
 Das erzeugt `dist/skribblio-word-assist.zip` inklusive Icons und Wortlisten.

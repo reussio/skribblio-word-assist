@@ -11,7 +11,7 @@ esac
 output_dir="$(dirname "$output_file")"
 
 cd "$repo_root"
-npm run build
+bun run build
 
 mkdir -p "$output_dir"
 rm -f "$output_file"

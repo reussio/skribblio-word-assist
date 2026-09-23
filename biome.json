@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!!resources/word-lists", "!!package-lock.json"]
+    "includes": ["**", "!!resources/word-lists", "!!bun.lock"]
   },
   "formatter": {
     "enabled": true,
