@@ -1,26 +1,59 @@
-# skribbl.io Helper
+# Skribbl.io Word Assist
 
-Chrome-Extension fuer `skribbl.io`, gebaut mit React, TypeScript und Vite.
+Skribbl.io Word Assist is a Chrome extension that shows matching word suggestions during guessing rounds on [skribbl.io](https://skribbl.io/).
 
-## Aktueller Stand
+The extension reads the current word length and revealed letters, compares them with a bundled language-specific dictionary, and displays up to 50 matching words next to the chat. Everything runs locally in the browser.
 
-- Content Script wird auf `skribbl.io` geladen.
-- Wortlisten werden direkt aus dem Extension-Paket geladen.
-- Die Vorschlaege werden direkt im Bereich `#game-word` unter den Hints eingeblendet.
-- Bereits sichtbare Buchstaben werden mit `_`-Platzhaltern kombiniert, zum Beispiel `a__le`.
-- Die Laenge kommt aus `#game-word > div.hints > div > div.word-length`, aufgedeckte Buchstaben aus `.hint.uncover`.
-- Passende Woerter werden anhand der erkannten Spielsprache aus der passenden JSON-Datei vorgeschlagen.
-- Die UI ist kompakt und orientiert sich am vorhandenen Spiel-Layout statt an einem separaten Popup.
+## Features
 
-## Dateien
+- Updates suggestions automatically as letters are revealed.
+- Detects the active game language.
+- Filters suggestions using the regular chat input.
+- Submits a suggestion when it is clicked.
+- Removes words that have already been submitted during the current round.
+- Uses bundled word lists without external API requests.
+- Integrates directly into the existing skribbl.io layout.
 
-- `manifest.json`: Manifest V3 fuer Chrome und Vorlage fuer den Build.
-- `src/`: React-UI, DOM-Erkennung, Pattern-Matching und Ressourcen-Laden.
-- `resources/icons/`: Extension-Icons in allen benoetigten Groessen.
-- `resources/word-lists/`: Mitgelieferte sprachspezifische Wortlisten.
-- `vite.config.ts`: Erzeugt das gebuendelte Content-Script.
+## Supported languages
 
-## Entwicklung
+- English
+- German
+- French
+- Spanish
+- Korean
+
+## Installation
+
+### Chrome Web Store
+
+Install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/pkehacnkgcbmiogdaoomiiahbeamgoim).
+
+### Local installation
+
+Requirements:
+
+- Chrome 114 or newer
+- [Bun](https://bun.sh/)
+
+Clone and build the project:
+
+```sh
+git clone https://github.com/reussio/skribblio-word-assist.git
+cd skribblio-word-assist
+bun install
+bun run build
+```
+
+Load the generated extension in Chrome:
+
+1. Open `chrome://extensions`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked**.
+4. Select the generated `dist/` directory.
+
+After rebuilding, reload the extension from `chrome://extensions` and refresh the skribbl.io tab.
+
+## Development
 
 ```sh
 bun install
@@ -28,25 +61,38 @@ bun run check
 bun run build
 ```
 
-Der Build liegt anschliessend in `dist/`.
+Available commands:
 
-## Installation
+| Command | Description |
+| --- | --- |
+| `bun run check` | Run the TypeScript and Biome checks |
+| `bun run typecheck` | Run TypeScript without emitting files |
+| `bun run lint` | Check the repository with Biome |
+| `bun run format` | Format the repository with Biome |
+| `bun run build` | Build the unpacked extension in `dist/` |
+| `bun run package` | Create `dist/skribblio-word-assist.zip` for release |
 
-1. In Chrome `chrome://extensions` oeffnen.
-2. Entwickler-Modus aktivieren.
-3. `Entpackte Erweiterung laden` waehlen.
-4. Den erzeugten Ordner `dist/` auswaehlen.
+## Project structure
 
-## Packaging
-
-Fuer ein vollstaendiges Store-Paket:
-
-```sh
-bun run package
+```text
+src/                Extension source code
+resources/icons/    Extension icons
+resources/word-lists/
+                    Bundled language dictionaries
+scripts/            Build and packaging scripts
+store-assets/       Chrome Web Store assets
+manifest.json       Chrome extension manifest
+vite.config.ts      Production build configuration
 ```
 
-Das erzeugt `dist/skribblio-word-assist.zip` inklusive Icons und Wortlisten.
+The extension is built as a Manifest V3 content script with React, TypeScript, and Vite. It does not use a popup or background service worker.
 
-## Hinweis
+## Privacy
 
-Aktuell sind Sprachcodes fuer `en`, `de`, `es`, `fr` und `ko` verdrahtet, passend zu den vorhandenen Dateien in `resources/word-lists`. Die Extension benoetigt fuer die Wortlisten keinen Netzwerkzugriff; Aktualisierungen werden mit einer neuen Extension-Version ausgeliefert.
+Skribbl.io Word Assist does not collect, store, or transmit personal data. It does not include analytics or tracking and does not contact an external service for word matching.
+
+The extension only reads the visible game state and the local chat input required to filter and submit suggestions. All dictionaries are included in the extension package.
+
+## Disclaimer
+
+This is an independent, unofficial project and is not affiliated with or endorsed by skribbl.io.
