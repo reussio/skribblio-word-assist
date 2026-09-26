@@ -2,22 +2,12 @@ import type { KeyboardEvent, PointerEvent } from "react";
 import type { WordMatch } from "./model";
 
 interface SuggestionListProps {
-  isSolved: boolean;
   matches: readonly WordMatch[];
   onSelect: (word: string) => void;
   runtimeAvailable: boolean;
 }
 
-export function SuggestionList({
-  isSolved,
-  matches,
-  onSelect,
-  runtimeAvailable
-}: SuggestionListProps) {
-  if (isSolved) {
-    return <li className="skribbl-helper-empty">Successfully guessed</li>;
-  }
-
+export function SuggestionList({ matches, onSelect, runtimeAvailable }: SuggestionListProps) {
   if (!runtimeAvailable) {
     return <li className="skribbl-helper-empty">Extension runtime unavailable</li>;
   }

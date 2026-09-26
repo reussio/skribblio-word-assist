@@ -9,6 +9,10 @@
   z-index: 5;
 }
 
+#skribbl-helper-chat-column > #game-chat > .ad-2 {
+  display: none;
+}
+
 #skribbl-helper-root {
   position: relative;
   color: #132238;
@@ -29,7 +33,7 @@
   max-height: 250px;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 0 2px 8px rgba(19, 34, 56, 0.08);
   position: relative;
   z-index: 6;
@@ -40,22 +44,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 6px;
   min-height: 40px;
-  padding: 9px 10px 8px;
+  padding: 9px 8px 8px;
   border-bottom: 1px solid rgba(19, 34, 56, 0.1);
   box-sizing: border-box;
+}
+
+.skribbl-helper-summary--standalone {
+  border-bottom: 0;
 }
 
 .skribbl-helper-summary-text {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
   flex: 1 1 auto;
   min-width: 0;
-  flex-wrap: wrap;
-  align-content: center;
-  row-gap: 2px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .skribbl-helper-title {
@@ -96,7 +103,7 @@
 .skribbl-helper-toggle {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-size: 11px;
   color: #43556f;
   cursor: pointer;

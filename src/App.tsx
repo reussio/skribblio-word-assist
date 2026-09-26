@@ -35,9 +35,11 @@ export function App({ controller }: AppProps) {
 
   return (
     <div className="skribbl-helper-panel">
-      <div className="skribbl-helper-summary">
+      <div
+        className={`skribbl-helper-summary${snapshot.isSolved ? " skribbl-helper-summary--standalone" : ""}`}
+      >
         <div className="skribbl-helper-summary-text">
-          <span className="skribbl-helper-title">{snapshot.isSolved ? "Guessed" : "Matches"}</span>
+          <span className="skribbl-helper-title">Matches</span>
           <span className="skribbl-helper-meta">
             {countLabel} · {LANGUAGE_NAMES[snapshot.activeLanguage]}
           </span>
@@ -51,16 +53,17 @@ export function App({ controller }: AppProps) {
           <span>Filter by Chat</span>
         </label>
       </div>
-      <div className="skribbl-helper-body">
-        <ul className="skribbl-helper-list">
-          <SuggestionList
-            isSolved={snapshot.isSolved}
-            matches={matches.visible}
-            onSelect={(word) => controller.selectWord(word)}
-            runtimeAvailable={snapshot.runtimeAvailable}
-          />
-        </ul>
-      </div>
+      {!snapshot.isSolved && (
+        <div className="skribbl-helper-body">
+          <ul className="skribbl-helper-list">
+            <SuggestionList
+              matches={matches.visible}
+              onSelect={(word) => controller.selectWord(word)}
+              runtimeAvailable={snapshot.runtimeAvailable}
+            />
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
